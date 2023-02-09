@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #video-container {
+        width: 320px;
+        height: 240px;
+        margin: 0 auto;
+      }
+
+      video {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="video-container">
+      <video id="webcam"></video>
+    </div>
+
+    <script>
+      // Check if the browser supports getUserMedia API
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        // Access the webcam
+        navigator.mediaDevices
+          .getUserMedia({ video: true })
+          .then(function (stream) {
+            // Attach the video stream to the video element
+            var video = document.getElementById("webcam");
+            video.srcObject = stream;
+            video.play();
+          })
+          .catch(function (error) {
+            console.error("Could not access webcam:", error);
+          });
+      } else {
+        console.error("Your browser does not support getUserMedia API");
+      }
+    </script>
+  </body>
+</html>

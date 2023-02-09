@@ -2,8 +2,9 @@
 # Create your views here.
 from django.shortcuts import render, HttpResponse
 
+
 def index(request):
-    return HttpResponse("Hello, world. You're at the home page.")
+    return render(request, "index.html")
 def hello(request):
     return HttpResponse("anushka yadav")
 def anshita(request):
